@@ -10,37 +10,37 @@ if memo_type == 1
   puts "新規でメモを作成"  
   puts "拡張子を除いたファイルを入力してください。"
   
-file_name = gets
+file_name = gets.chomp
+
 
 puts "メモしたい内容を記入してください"
 puts "完了したら　Ctrl＋Dを推します"
 
-memo = gets
+memo = $stdin.readlines
+ 
 
 CSV.open("#{file_name}.csv","w") do |csv|
 csv << ["#{memo}"]
-
 end
 
 elsif memo_type == 2
     
-puts "既存のメモ編集する"  
-puts "拡張子を除いたファイルを入力してください。"  
-　　
-file_name = gets
-　　 
-puts "追加したい内容を記入してください"
-　　
-memo = gets
+puts "既存のメモ編集する"
 
-CSV.open("#{file_name}.csv","a") do |csv|
+file_name = gets
+
+
+puts "メモしたい内容を記入してください"
+puts "完了したら　Ctrl＋Dを推します"
+
+memo = $stdin.readlines
+　　
+CSV.open("file_name.csv","a") do |csv|
 csv << ["#{memo}"]
 
 end
- 
-else  
-　
-  memo_type = gets.to_i 
 
-end
- 
+
+else 
+  memo_type = gets.to_i
+end 
